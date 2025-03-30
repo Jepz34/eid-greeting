@@ -1,4 +1,3 @@
-# eid-greeting
 <!DOCTYPE html><html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -21,10 +20,13 @@
         h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
+            transition: transform 0.3s ease-in-out;
         }
         p {
             font-size: 1.2em;
             max-width: 80%;
+            display: none;
+            transition: opacity 0.5s ease-in-out;
         }
         .btn {
             margin-top: 20px;
@@ -41,19 +43,24 @@
             background: #ffcc00;
             color: white;
         }
+        .big-text {
+            transform: scale(1.5);
+        }
+        .visible {
+            display: block;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-    <h1>Selamat Idul Fitri! 🌙✨</h1>
-    <p>Taqabbalallāhu minnā wa minkum. Semoga hari yang fitri ini membawa kebahagiaan, keberkahan, dan kedamaian untuk kita semua! 😊</p>
-    <button class="btn" onclick="shareMessage()">Bagikan Ucapan</button><script>
-    function shareMessage() {
-        const message = "Selamat Idul Fitri! 🌙✨\nTaqabbalallāhu minnā wa minkum. Semoga hari ini membawa kebahagiaan dan berkah untuk kita semua! ";
-        if (navigator.share) {
-            navigator.share({ text: message });
-        } else {
-            alert("Salin pesan ini dan bagikan ke teman-teman!\n\n" + message);
-        }
+    <h1 id="greeting">Selamat Idul Fitri! 🌙✨</h1>
+    <p id="message">Taqabbalallāhu minnā wa minkum. Semoga hari yang fitri ini membawa kebahagiaan, keberkahan, dan kedamaian untuk kita semua! 😊💖</p>
+    <button class="btn" onclick="showGreeting()">Klik untuk Ucapan Spesial</button><script>
+    function showGreeting() {
+        const greeting = document.getElementById("greeting");
+        const message = document.getElementById("message");
+        greeting.classList.toggle("big-text");
+        message.classList.toggle("visible");
     }
 </script>
 
